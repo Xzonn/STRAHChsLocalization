@@ -1,0 +1,14 @@
+name: Build on push
+
+on:
+  push:
+    branches: 
+      - master
+    paths-ignore:
+      - '*.md'
+      - '**/.gitignore'
+  workflow_dispatch:
+
+jobs:
+  build:
+    uses: ./.github/workflows/build.yml
