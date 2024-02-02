@@ -1,6 +1,6 @@
 # [《夏日重现 Another Horizon》汉化](https://xzonn.top/STRAHChsLocalization/)
 
-[![Convert csv to json](https://github.com/Xzonn/STRAHChsLocalization/actions/workflows/convert.yml/badge.svg)](https://github.com/Xzonn/STRAHChsLocalization/actions/workflows/convert.yml) [![CC-BY-NC-SA 4.0](https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc-sa.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode)
+[![CC-BY-NC-SA 4.0](https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc-sa.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode)
 
 ## 基本说明
 **注意：本补丁仅用作技术交流，请用于正版游戏。**
