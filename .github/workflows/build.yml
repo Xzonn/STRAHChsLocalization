@@ -2,35 +2,82 @@ name: Build
 
 on:
   workflow_call:
+    inputs:
+      branch:
+        required: true
+        type: string
+        default: 'master'
 
 jobs:
+  check-cache:
+    runs-on: windows-latest
+    outputs:
+      commit-id: ${{ steps.get-tools-commit-id.outputs.id }}
+      cache-hit: ${{ steps.cache-tools.outputs.cache-hit }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: Xzonn/STRAHChsLocalizationHelper
+          ref: master
+      - name: Get tools commit id
+        id: get-tools-commit-id
+        run: |
+          Write-Output "id=$(git rev-parse HEAD)" >> $env:GITHUB_OUTPUT
+      - name: Cache tools
+        id: cache-tools
+        uses: actions/cache@v4
+        with:
+          path: STRAHChsLocalizationHelper/bin/Release/net8.0-windows/win-x64/publish/
+          key: tools-${{ steps.get-tools-commit-id.outputs.id }}
+
+  build-tools:
+    needs: check-cache
+    if: needs.check-cache.outputs.cache-hit != 'true'
+    uses: Xzonn/STRAHChsLocalizationHelper/.github/workflows/build.yml@master
+
   build:
+    needs: [check-cache, build-tools]
+    if: ${{ always() }}
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
-          ref: master
+          ref: ${{ inputs.branch }}
           fetch-depth: 1
+      - name: Commit Information
+        id: commit
+        run: |
+          echo "commit_id=commit-$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+          echo "commit_message=$(git log -1 --pretty=%s)" >> $GITHUB_OUTPUT
+      - name: Cache tools
+        id: cache-tools
+        uses: actions/cache@v4
+        with:
+          path: STRAHChsLocalizationHelper/bin/Release/net8.0-windows/win-x64/publish/
+          key: tools-${{ needs.check-cache.outputs.commit-id }}
+      - name: Download tools
+        if: needs.check-cache.outputs.cache-hit != 'true'
+        uses: actions/download-artifact@v4
+        with:
+          name: STRAHChsLocalizationHelper
+          path: STRAHChsLocalizationHelper/bin/Release/net8.0-windows/win-x64/publish/
       - name: Create Patch
         run: |
-          bin/STRAHChsLocalizationHelper
-          compress-archive out/01005940182ec000/ out/patch.zip -force
+          STRAHChsLocalizationHelper/bin/Release/net8.0-windows/win-x64/publish/STRAHChsLocalizationHelper
+          compress-archive out/Switch/ out/patch-switch.zip -force
       - name: Upload patch
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: patch
           path: |
-            out/01005940182ec000/
-      - run: tail -n +2 README.md > NEW_README.md
+            out/Switch/
       - name: GitHub Release
         uses: ncipollo/release-action@v1
         with:
           allowUpdates: true
-          artifacts: "out/patch.zip"
+          artifacts: "out/patch-switch.zip"
           body: |
-            [![Convert csv to json](https://github.com/Xzonn/STRAHChsLocalization/actions/workflows/convert.yml/badge.svg)](https://github.com/Xzonn/STRAHChsLocalization/actions/workflows/convert.yml)
-
             本页面下方的链接为自动构建并发布的开发版本补丁。此版本补丁可能存在较多问题，仅供测试使用。
-          name: "《夏日重现 Another Horizon》汉化"
+          name: ${{ steps.commit.outputs.commit_message }}
           tag: publish
           token: ${{ secrets.GITHUB_TOKEN }}
