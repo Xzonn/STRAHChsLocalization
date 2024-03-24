@@ -28,7 +28,7 @@ jobs:
   build-tools:
     needs: check-cache
     if: needs.check-cache.outputs.cache-hit != 'true'
-    uses: Xzonn/STRAHChsLocalizationHelper@master/.github/workflows/build.yml
+    uses: Xzonn/STRAHChsLocalizationHelper/.github/workflows/build.yml@master
 
   build:
     needs: [check-cache, build-tools]
