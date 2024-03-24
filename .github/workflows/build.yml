@@ -2,6 +2,11 @@ name: Build
 
 on:
   workflow_call:
+    inputs:
+      branch:
+        required: true
+        type: string
+        default: 'master'
 
 jobs:
   check-cache:
@@ -37,7 +42,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: master
+          ref: ${{ inputs.branch }}
           fetch-depth: 1
       - name: Commit Information
         id: commit
