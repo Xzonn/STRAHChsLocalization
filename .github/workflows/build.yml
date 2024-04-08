@@ -74,13 +74,13 @@ jobs:
       - name: Create Patch
         run: |
           STRAHChsLocalizationHelper/bin/Release/net8.0-windows/win-x64/publish/STRAHChsLocalizationHelper
-          compress-archive out/Switch/ out/patch-switch.zip -force
+          Compress-Archive -Path "out/01005940182ec000/" -Destination "out/patch-switch.zip" -Force
       - name: Upload patch
         uses: actions/upload-artifact@v4
         with:
           name: patch
           path: |
-            out/Switch/
+            out/01005940182ec000/
       - name: GitHub Release
         uses: ncipollo/release-action@v1
         with:
