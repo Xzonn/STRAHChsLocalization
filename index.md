@@ -13,12 +13,19 @@ title: 《夏日重现 Another Horizon》汉化发布
 
 本补丁基于 Nintendo Switch 版制作，无法直接用于其他平台版本。
 
+## 更新日志
+- 0.10.0（2024-04-14）：
+  - 补充翻译了一部分之前未定位的文本。
+  - 翻译了一部分图片。
+- 0.9.0（2024-02-04）：
+  - 最初发布版本。
+
 ## 使用方式
 需要一台能够运行 [Atmosphere](https://github.com/Atmosphere-NX/Atmosphere) 自制固件（CFW）的 Nintendo Switch 主机。请下载 [补丁](#下载链接) 并解压，然后将`01005940182ec000`文件夹移动到到`SD:/atmosphere/contents/`文件夹下。
 
 ## 下载链接
 <div class="alert alert-primary" markdown="1">
-- **[Nintendo Switch 版（0.9.0）](https://github.com/Xzonn/STRAHChsLocalization/releases/v0.9.0/)**
+- **[Nintendo Switch 版（0.10.0）](https://github.com/Xzonn/STRAHChsLocalization/releases/v0.10.0/)**
 - [百度网盘分流](https://pan.baidu.com/s/1t87hTW1pUZLoo4ptffhvVw?pwd=stra)
 </div>
 
@@ -38,4 +45,4 @@ title: 《夏日重现 Another Horizon》汉化发布
 - **Xzonn**：首次发布的版本是0.9.0版本。主线流程和原作基本一致，因为我看过漫画和动画，所以翻译起来比较容易。但是原创剧情的部分，让我原文有很多方言（艾伦和根津的方言尤其严重），我理解起来有些困难，难免会有翻译不准确的地方。如果您发现了翻译错误，欢迎在页面下方留言，我会进行改正。另外本作有些文本是以精灵图（Sprite）的形式存在的，导入有些困难，因此就没有翻译，如果有人感兴趣研究的话，也欢迎联系我。
 
 ## 预览视频
-{% include video.html bvid="BV1gP411r7kr" %} 
+{% include video.html bvid="BV1gP411r7kr" %}
