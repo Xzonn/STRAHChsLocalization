@@ -21,7 +21,11 @@ title: 《夏日重现 Another Horizon》汉化发布
   - 最初发布版本。
 
 ## 使用方式
-需要一台能够运行 [Atmosphere](https://github.com/Atmosphere-NX/Atmosphere) 自制固件（CFW）的 Nintendo Switch 主机。请下载 [补丁](#下载链接) 并解压，然后将`01005940182ec000`文件夹移动到到`SD:/atmosphere/contents/`文件夹下。
+需要一台能够运行[Atmosphere](https://github.com/Atmosphere-NX/Atmosphere)自制固件（CFW）的Nintendo Switch主机。请下载 [补丁](#下载链接) 并解压，然后将`01005940182ec000`文件夹移动到到`SD:/atmosphere/contents/`文件夹下。
+
+<div class="alert alert-danger" markdown="1">
+**注意：**并非所有Switch主机均可使用汉化补丁。如果你的主机根目录下没有名为`atmosphere`的文件夹，并且你不知道Atmosphere、自制固件是什么，那么请不要尝试使用本补丁。
+</div>
 
 ## 下载链接
 <div class="alert alert-primary" markdown="1">

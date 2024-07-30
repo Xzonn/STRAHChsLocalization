@@ -83,6 +83,10 @@ article > p {
   }
 }
 
+.alert p:last-child {
+  margin-bottom: 0;
+}
+
 /* 列表 */
 ul, ol {
   padding-left: 2em;
@@ -164,6 +168,11 @@ a[target="_blank"] {
       display: none;
     }
   }
+}
+
+code {
+  margin-left: 0.2em;
+  margin-right: 0.2em;
 }
 
 /* 辅助样式 */
